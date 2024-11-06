@@ -11,7 +11,7 @@ const collectionName = 'users';
 passport.use(new LocalStrategy({ usernameField: 'email'}, async (email, password, callback) => {
     const user = await Mongo.db
     .collection(collectionName)
-    .findOne({email: email})
+    .findOne({email: email});
 
     if(!user){
         return callback(null, false);
