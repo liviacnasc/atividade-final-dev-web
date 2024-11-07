@@ -9,7 +9,9 @@ import { ObjectId } from "mongodb";
 const collectionName = 'usuarios';
 
 passport.use(new LocalStrategy({ usernameField: 'email'}, async (email, password, callback) => {
-    const user = await Mongo.db.collection(collectionName).findOne({email: email});
+    const user = await Mongo.db
+    .collection(collectionName)
+    .findOne({email: email});
 
     if(!user){
         return callback(null, false);
@@ -17,9 +19,9 @@ passport.use(new LocalStrategy({ usernameField: 'email'}, async (email, password
 
     const saltBuffer = user.salt.buffer;
 
-    crypto.pbkdf2(password, saltBuffer, 310000, 16, "sha256", (err, hashedPassword) => {
-        if(err){
-            return callback(null, false);
+    crypto.pbkdf2(password, saltBuffer, 310000, 16, "sha256", (error, hashedPassword) => {
+        if(error){
+            return callback(error);
         }
 
         const userPasswordBuffer = Buffer.from(user.password.buffer)
@@ -51,7 +53,7 @@ authRouter.post("/signup", async (req, res) => {
 
     const salt = crypto.randomBytes(16);
 
-    crypto.pbkdf2(req.body.password, salt, 31000, 16, "sha256", async (err, hashedPassword) => {
+    crypto.pbkdf2(req.body.password, salt, 310000, 16, "sha256", async (err, hashedPassword) => {
         if(err){
             return res.status(500).send({
                 success: false,
@@ -88,6 +90,44 @@ authRouter.post("/signup", async (req, res) => {
             })
         }
     })
+})
+
+authRouter.post("/login", async (req, res) => {
+    passport.authenticate('local', (error, user) => {
+        if(error) {
+            return res.status(500).send({
+                success: false,
+                statusCode: 500,
+                body: {
+                    text: "Erro na autenticação.",
+                    error
+                }
+            })
+        }
+
+        if(!user){
+            return res.status(500).send({
+                success: false,
+                statusCode: 400,
+                body: {
+                    text: "Usuário não encontrado.",
+                    error
+                }
+            })
+        }
+
+        const token = jwt.sign(user, 'secret');
+
+        return res.status(200).send({
+            success: true,
+            statusCode: 200,
+            body: {
+                text: "Login do usuário realizado com sucesso.",
+                user,
+                token
+            }
+        })
+    })(req, res)
 })
 
 export default authRouter;
