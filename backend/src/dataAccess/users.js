@@ -36,22 +36,22 @@ export default class UsersDataAccess {
                 const result = await Mongo.db
                 .collection(collectionName)
                 .findOneAndUpdate(
-                    { _id: userId },
-                    { $set: userData}
+                    { _id: new ObjectId(userId) },
+                    { $set: userData }
                 );
 
                 return result;
             })
+        }else{
+            const result = await Mongo.db
+            .collection(collectionName)
+            .findOneAndUpdate(
+                {_id: new ObjectId(userId)},
+                {$set: userData}
+            );
+    
+            return result;
         }
-
-        const result = await Mongo.db
-        .collection(collectionName)
-        .findOneAndUpdate(
-            {_id: new ObjectId(userId)},
-            {$set: userData}
-        );
-
-        return result;
     }
 
 }
