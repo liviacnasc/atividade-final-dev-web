@@ -1,7 +1,7 @@
 export const successo = (body) => {
     return {
         success: true,
-        statusCode: 500,
+        statusCode: 200,
         body
     }
 
