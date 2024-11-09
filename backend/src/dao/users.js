@@ -4,7 +4,7 @@ import crypto from "crypto";
 
 const collectionName = "usuarios";
 
-export default class UsersDataAccess {
+export default class UsersDAO {
     async getUsers() {
         const result = await Mongo.db
         .collection(collectionName)

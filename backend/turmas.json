@@ -1,0 +1,16 @@
+{
+    "nome_turma": "6º Ano A",
+    "serie": "6º Ano",
+    "turno": "Matutino",
+    "ano_letivo": "2024",
+    "professor_responsavel": "Mariana Oliveira",
+    "sala": "12",
+    "alunos": [
+        {
+            "alunoId": "672fcc569b4ea48d11e8f5bc"
+        },
+        {
+            "alunoId": "672fcc569b4ea48d11e8f5bd"
+        }
+    ]
+}

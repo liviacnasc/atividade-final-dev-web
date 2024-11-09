@@ -1,9 +1,9 @@
-import UsersDataAccess from "../dataAccess/users.js";
+import UsersDAO from '../DAO/users.js';
 import { erroServidor, successo } from '../helpers/httpResponse.js';
 
 export default class UsersController{
     constructor() {
-        this.dataAccess = new UsersDataAccess();
+        this.dataAccess = new UsersDAO();
     }
 
     async getUsers() {

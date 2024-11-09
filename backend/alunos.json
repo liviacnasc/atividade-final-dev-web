@@ -1,0 +1,113 @@
+[
+    {
+        "nome": "Lucas",
+        "sobrenome": "Silva",
+        "cpf": "123.456.789-10",
+        "data_de_nascimento": "2012-09-18",
+        "data_de_matricula": "2022-02-15",
+        "situacao": "Ativo",
+        "notas": {
+            "portugues": 7.5,
+            "matematica": 8.2,
+            "ciencias": 6.9
+        },
+        "presencas": {
+            "total_aulas": 200,
+            "aulas_frequentadas": 190
+        },
+        "historico_disciplinar": [],
+        "necessidades_especiais": "Nenhuma"
+    },
+    {
+        "nome": "Mariana",
+        "sobrenome": "Souza",
+        "cpf": "234.567.890-21",
+        "data_de_nascimento": "2011-05-10",
+        "nome_da_mae": "Juliana Souza",
+        "nome_do_pai": "Paulo Souza",
+        "data_de_matricula": "2021-03-10",
+        "situacao": "Ativo",
+        "notas": {
+            "portugues": 8.1,
+            "matematica": 7.8,
+            "ciencias": 8.0
+        },
+        "presencas": {
+            "total_aulas": 200,
+            "aulas_frequentadas": 195
+        },
+        "historico_disciplinar": [],
+        "necessidades_especiais": "Nenhuma"
+    },
+    {
+        "nome": "Gabriel",
+        "sobrenome": "Lima",
+        "cpf": "345.678.901-32",
+        "data_de_nascimento": "2012-01-12",
+        "nome_da_mae": "Fernanda Lima",
+        "nome_do_pai": "Roberto Lima",
+        "data_de_matricula": "2022-01-20",
+        "situacao": "Ativo",
+        "notas": {
+            "portugues": 6.9,
+            "matematica": 7.3,
+            "ciencias": 7.1
+        },
+        "presencas": {
+            "total_aulas": 200,
+            "aulas_frequentadas": 180
+        },
+        "historico_disciplinar": [],
+        "necessidades_especiais": "Nenhuma"
+    },
+    {
+        "nome": "Beatriz",
+        "sobrenome": "Ferreira",
+        "cpf": "456.789.012-43",
+        "data_de_nascimento": "2013-04-22",
+        "email_institucional": "beatriz.ferreira@escola.edu.br",
+        "nome_da_mae": "Marcela Ferreira",
+        "nome_do_pai": "João Ferreira",
+        "serie": "5º Ano",
+        "turma": "A",
+        "data_de_matricula": "2023-02-12",
+        "situacao": "Ativo",
+        "notas": {
+            "portugues": 8.3,
+            "matematica": 7.5,
+            "ciencias": 8.1
+        },
+        "presencas": {
+            "total_aulas": 200,
+            "aulas_frequentadas": 200
+        },
+        "historico_disciplinar": [],
+        "necessidades_especiais": "Nenhuma"
+    },
+    {
+        "nome": "João",
+        "sobrenome": "Gomes",
+        "cpf": "567.890.123-54",
+        "data_de_nascimento": "2010-11-30",
+        "nome_da_mae": "Renata Gomes",
+        "nome_do_pai": "Eduardo Gomes",
+        "data_de_matricula": "2021-04-25",
+        "situacao": "Ativo",
+        "notas": {
+            "portugues": 7.9,
+            "matematica": 8.4,
+            "ciencias": 7.8
+        },
+        "presencas": {
+            "total_aulas": 200,
+            "aulas_frequentadas": 193
+        },
+        "historico_disciplinar": [
+            {
+                "data": "2023-03-15",
+                "observacao": "Advertência por comportamento inadequado"
+            }
+        ],
+        "necessidades_especiais": "Nenhuma"
+    }
+]

@@ -38,8 +38,8 @@ passport.use(new LocalStrategy({ usernameField: 'email'}, async (email, password
 
 const authRouter = express.Router();
 
-authRouter.post("/signup", async (req, res) => {
-    const checkUser = await Mongo.db.collection(collectionName).findOne({ email: req.body.email});
+authRouter.post("/cadastro", async (req, res) => {
+    const checkUser = await Mongo.db.collection(collectionName).findOne({ email: req.body.email });
 
     if(checkUser){
         return res.status(500).send({
@@ -68,6 +68,8 @@ authRouter.post("/signup", async (req, res) => {
         const result = await Mongo.db
         .collection(collectionName)
         .insertOne({
+            nome: req.body.nome,
+            sobrenome: req.body.sobrenome,
             email: req.body.email,
             password: hashedPassword,
             salt
