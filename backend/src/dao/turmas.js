@@ -74,9 +74,20 @@ export default class TurmasDAO {
     }
 
     async deleteTurma(turmaId) {
-        const result = await Mongo.db
+        const alunosParaDeletar = await Mongo.db
+        .collection('alunosTurmas')
+        .deleteMany(
+            {turmaId: new ObjectId(turmaId)}
+        )
+
+        const turmaParaDeletar = await Mongo.db
         .collection(collectionName)
         .findOneAndDelete({_id: new ObjectId(turmaId)})
+
+        const result = {
+            alunosParaDeletar,
+            turmaParaDeletar
+        }
 
         return result;
     }
