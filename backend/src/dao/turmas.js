@@ -12,23 +12,23 @@ export default class TurmasDAO {
         .aggregate([
             {
                 $lookup: {
-                    from: 'alunos',
+                    from: 'alunosTurmas',
                     localField: '_id',
                     foreignField: 'turmaId',
-                    as: 'alunos'
-                },
+                    as: 'alunosTurma'
+                }
             },
             {
-                $project: {
-                    'alunos.data_de_nascimento': 0,
-                    'alunos.data_de_matricula': 0,
-                    'alunos.situacao': 0,
-                    'alunos.notas': 0,
-                    'alunos.historico_disciplinar': 0,
-                    'alunos.necessidades_especiais': 0,
-                    'alunos.turmaId': 0,
+                $unwind: { path: "$alunosTurma" }
+            },
+            {
+                $lookup: {
+                    from: 'alunos',
+                    localField: 'alunosTurma.alunoId',
+                    foreignField: '_id',
+                    as: 'alunosTurma.dadosAluno'
                 }
-            }
+            },
         ])
         .toArray()
 
@@ -48,26 +48,25 @@ export default class TurmasDAO {
             throw new Error("Não foi possível adicionar a turma.")
         }
 
-        const ids = [];
-
         alunos.map((aluno) => {
             aluno.alunoId = new ObjectId(aluno.alunoId);
+            aluno.turmaId = new ObjectId(novaTurma.insertedId)
         })
 
-        alunos.forEach(element => {
-            ids.push(element.alunoId);
-        });
-
         const result = await Mongo.db
-        .collection('alunos')
-        .updateMany(
-            { _id: {$in: ids}},
-            { $set: {turmaId: novaTurma.insertedId}}
-        );
+        .collection('alunosTurmas')
+        .insertMany(alunos);
+        
+        // const result = await Mongo.db
+        // .collection('alunos')
+        // .updateMany(
+        //     { _id: {$in: ids}},
+        //     { $set: {turmaId: novaTurma.insertedId}}
+        // );
 
         console.log(result);
 
-        if(!result) {
+        if(!result.insertedIds) {
             throw new Error ("Não foi possível adicionar o(s) alunos(s).");
         }
 

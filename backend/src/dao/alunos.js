@@ -13,15 +13,26 @@ export default class AlunosDAO {
             [
                 {
                     $lookup:{
-                        from: 'turmas',
-                        localField: 'turmaId',
-                        foreignField: '_id',
+                        from: 'alunosTurmas',
+                        localField: '_id',
+                        foreignField: 'alunoId',
                         as: 'turma'
                     }
                 },
                 {
                     $project: {
-                        'turma.alunos': 0
+                        'turma.alunoId': 0,
+                    }
+                },
+                {
+                    $unwind: { path: '$turma'}
+                },
+                {
+                    $lookup:{
+                        from: 'turmas',
+                        localField: 'turma.turmaId',
+                        foreignField: '_id',
+                        as: 'turmaDetalhes'
                     }
                 }
             ]
