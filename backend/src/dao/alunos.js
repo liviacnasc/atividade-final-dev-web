@@ -22,10 +22,8 @@ export default class AlunosDAO {
                 {
                     $project: {
                         'turma.alunoId': 0,
+                        'turma._id': 0,
                     }
-                },
-                {
-                    $unwind: { path: '$turma'}
                 },
                 {
                     $lookup:{
