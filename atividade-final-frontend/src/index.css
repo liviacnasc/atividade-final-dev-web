@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+Link:visited {
+    color: #333;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    background: url('img/pattern-randomized.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.container {
+    width: 100%;
+    min-width: 400px;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    font-style: normal;
+   
+}
+
+h1, h2 {
+    color: #0055a5;
+    text-align: center;
+}
+
+h3 {
+    text-align: center; 
+}
+
+button, input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #0055a5;
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+        font-size: 14px;
+        width: 200px;
+        height: 40px;
+        text-align: center;
+        display: block;
+        margin: 10px auto; 
+}
+
+button:hover {
+    background-color: #003366;
+}
+
+ul li {
+    text-align: center;
+    text-decoration: none;
+    list-style: none;
+}
+
+.margin {
+    margin: 30px;
+}
+
+.voltar {
+    background-color: white;
+    color: #0055a5;
+    cursor: pointer;
+    padding: 5px 10px;
+        font-size: 14px;
+        width: 200px;
+        height: 40px;
+        text-align: center;
+        display: block;
+        margin: 10px auto; 
+}
+
+p { 
+    text-align: center;
+}
+
+.small-button{
+   
+        padding: 5px 10px;
+        font-size: 14px;
+        width: 120px;
+        height: 30px;
+        text-align: center;
+        display: block;
+        margin: 10px auto;  
+}
