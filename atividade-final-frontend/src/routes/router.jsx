@@ -1,15 +1,12 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Home from '../pages/Home';
-import App from '../App';
-import Layout from '../components/layout';
 import Alunos from '../pages/Alunos';
-import Login from '../pages/auth/Login';
-import Registro from '../pages/auth/Cadastro';
 import LandingPage from '../pages/LandingPage';
 import Turmas from '../pages/Turmas';
 import Charts from '../pages/Charts';
-import Cadastro from '../pages/auth/Cadastro';
+import { Auth } from '../pages/auth/Auth';
+import Layout from '../components/Layout';
 
 export const router = createBrowserRouter([
     {
@@ -19,15 +16,10 @@ export const router = createBrowserRouter([
 					{
 						index: true,
 						element: <LandingPage/>,
-									
 					},
 					{
-						path: 'login',
-						element: <Login/>
-					},
-					{
-						path: 'cadastro',
-						element: <Cadastro/>
+						path: 'auth',
+						element: <Auth/>
 					},
 					{
 							path: 'dashboard',

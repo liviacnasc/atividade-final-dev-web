@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppBar, Box, CssBaseline, Divider, Drawer, Icon, IconButton, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material';
 import { Draw, MenuBook, MenuRounded } from '@mui/icons-material';
 import Sidebar from './sidebar/Sidebar';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
+import authServices from '../services/Auth';
 
 const sidebarWidth = 240;
 
 function Layout(props) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const { logOut } = authServices();
+
+  const authData = JSON.parse(localStorage.getItem('auth'));
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(!authData) {
+      return navigate('auth')
+    }
+  })
+  
 
   const handleSidebarClose = () => {
     setIsClosing(true);
@@ -25,6 +37,10 @@ function Layout(props) {
     }
   }
 
+  const handleLogOut = () => {
+    logOut();
+    return navigate('/')
+  }
 
   return(
     <Box sx={{display: 'flex'}}>
@@ -63,7 +79,7 @@ function Layout(props) {
           display: {xs: 'block', sm: 'none'},
           '& .MuiDrawer-paper': { boxSizing: 'border-box', width: sidebarWidth }
         }}>
-          <Sidebar/>
+          <Sidebar callback={handleLogOut}/>
         </Drawer>
         <Drawer 
           variant='permanent'
@@ -72,7 +88,7 @@ function Layout(props) {
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: sidebarWidth }
           }}
         >
-          <Sidebar/>
+          <Sidebar callback={handleLogOut}/>
         </Drawer>
       </Box>
       <Box component="main" sx={{ p: 3 }}>
