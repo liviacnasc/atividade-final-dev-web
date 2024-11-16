@@ -20,17 +20,28 @@ export default class AlunosDAO {
                     }
                 },
                 {
-                    $project: {
-                        'turma.alunoId': 0,
-                        'turma._id': 0,
-                    }
+                    $unwind: { path: "$turma" }
                 },
                 {
                     $lookup:{
                         from: 'turmas',
                         localField: 'turma.turmaId',
                         foreignField: '_id',
-                        as: 'turmaDetalhes'
+                        as: 'turma.turmaDetalhes'
+                    }
+                },
+                {
+                    $group: {
+                        _id: '$_id',
+                        nome: { $first: '$nome'},
+                        sobrenome: { $first: '$sobrenome'},
+                        cpf: { $first: '$cpf'},
+                        data_de_nascimento: { $first: '$data_de_nascimento'},
+                        data_de_matricula: { $first: '$data_de_matricula'},
+                        situacao: { $first: '$situacao'},
+                        notas: { $first: '$notas'},
+                        presencas: { $first: '$presencas'},
+                        turma: { $push: '$turma.turmaDetalhes'},
                     }
                 }
             ]

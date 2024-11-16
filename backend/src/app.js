@@ -28,7 +28,7 @@ async function main() {
     });
     
     app.use('/auth', authRouter);
-    //app.use('/usuarios', usersRouter);
+    app.use('/user', usersRouter);
     app.use('/alunos', alunosRouter);
     app.use('/turmas', turmasRouter);
 

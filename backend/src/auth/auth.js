@@ -68,8 +68,7 @@ authRouter.post("/cadastro", async (req, res) => {
         const result = await Mongo.db
         .collection(collectionName)
         .insertOne({
-            nome: req.body.nome,
-            sobrenome: req.body.sobrenome,
+            nome_completo: req.body.userName,
             email: req.body.email,
             password: hashedPassword,
             salt

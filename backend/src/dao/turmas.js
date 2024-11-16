@@ -29,6 +29,23 @@ export default class TurmasDAO {
                     as: 'alunosTurma.dadosAluno'
                 }
             },
+            {
+                $group: {
+                    _id: '$_id',
+                    nome_turma: { $first: '$nome_turma'},
+                    serie: { $first: '$serie'},
+                    turno: { $first: '$turno'},
+                    ano_letivo: { $first: '$ano_letivo'},
+                    professor_responsavel: { $first: '$professor_responsavel'},
+                    sala: { $first: '$sala'},
+                    alunos: { $push: '$alunosTurma.dadosAluno' },
+                }
+            },
+            {
+                $sort: {
+                    nome_turma: 1
+                }
+            }
         ])
         .toArray()
 
