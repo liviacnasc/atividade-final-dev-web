@@ -46,7 +46,6 @@ function Layout(props) {
     <Box sx={{display: 'flex'}}>
 			<CssBaseline/>
       <AppBar
-      position='fixed'
       sx={{
         width: {sm: `calc(100% - ${sidebarWidth}px)`},
         display: {sm: 'none'},
@@ -91,7 +90,8 @@ function Layout(props) {
           <Sidebar callback={handleLogOut}/>
         </Drawer>
       </Box>
-      <Box component="main" sx={{ p: 3 }}>
+      <Box component="main" sx={{ width: {sm: `calc(100% - ${sidebarWidth}px)`}}}>
+      <Toolbar/>
 				<Outlet/>
       </Box>
     </Box>
