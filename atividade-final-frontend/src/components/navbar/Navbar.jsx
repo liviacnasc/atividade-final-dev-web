@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
   return (
     <Box sx={{display: 'flex'}}>
-        <AppBar position='fixed'>
+        <AppBar>
             <Toolbar sx={{justifyContent: 'space-between'}}>
                 <Typography>
                     Teste
@@ -16,6 +16,7 @@ const Navbar = () => {
                 </Button>
             </Toolbar>
         </AppBar>
+        <Toolbar/>
     </Box>
   )
 }

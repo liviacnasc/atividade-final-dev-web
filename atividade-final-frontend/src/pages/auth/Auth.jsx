@@ -44,38 +44,63 @@ export const Auth = () => {
             signUp(formData);
         }
       }
-
-
+      
     if(formType == 'login'){
         return (
-            <Box component={Container} sx={{padding: "30px", boxShadow: 2}}>
-                <Typography variant='body1' sx={{mb: "10px"}}>
-                    Login
-                </Typography>
-                <LoginForm onChange={handleFormDataChange} onSubmit={handleSubmitForm}/>
-                <Typography variant='body2' sx={{my: "10px"}}>
-                    Não possui uma conta?
-                </Typography>
-                <Button variant='outlined' onClick={handleFormType}>
-                    Cadastre-se
-                </Button>
-            </Box>
+            <Container
+                maxWidth={false}
+                sx={{
+                    backgroundImage: "url('src/assets/bg.png')",
+                    backgroundRepeat: 'repeat',
+                    objectFit: 'cover',
+                    height: '100vh',
+                    width: '100vw',
+                    display: 'flex',
+                    flexFlow: 'column',
+                    justifyContent: 'center'
+                    }}>
+                <Box component={Container} maxWidth='sm' sx={{display:'flex', flexFlow:'column', padding: "30px", boxShadow: 2, bgcolor:'white'}}>
+                    <Typography variant='body1' sx={{mb: "10px"}}>
+                        Login
+                    </Typography>
+                    <LoginForm onChange={handleFormDataChange} onSubmit={handleSubmitForm}/>
+                    <Typography variant='body2' sx={{my: "10px"}}>
+                        Não possui uma conta?
+                    </Typography>
+                    <Button variant='outlined' onClick={handleFormType} sx={{alignSelf: 'center'}}>
+                        Cadastre-se
+                    </Button>
+                </Box>
+            </Container>
         )
     }
     if(formType == 'cadastro'){
         return (
-            <Box component={Container} sx={{padding: "30px", boxShadow: 2}}>
-                <Typography variant='body1' sx={{mb: "10px"}}>
-                    Cadastro
-                </Typography>
-                <CadastroForm onChange={handleFormDataChange} onSubmit={handleSubmitForm}/>
-                <Typography variant='body2' sx={{my: "10px"}}>
-                    Já possui uma conta?
-                </Typography>
-                <Button variant='outlined' onClick={handleFormType}>
-                    Faça Login
-                </Button>
-            </Box>
+            <Container
+                maxWidth={false}
+                sx={{
+                    backgroundImage: "url('src/assets/bg.png')",
+                    backgroundRepeat: 'repeat',
+                    objectFit: 'cover',
+                    height: '100vh',
+                    width: '100vw',
+                    display: 'flex',
+                    flexFlow: 'column',
+                    justifyContent: 'center'
+                    }}>
+                <Box component={Container} maxWidth='sm' sx={{display:'flex', flexFlow:'column', padding: "30px", boxShadow: 2, bgcolor:'white'}}>
+                    <Typography variant='body1' sx={{mb: "10px"}}>
+                        Cadastro
+                    </Typography>
+                    <CadastroForm onChange={handleFormDataChange} onSubmit={handleSubmitForm}/>
+                    <Typography variant='body2' sx={{my: "10px"}}>
+                        Já possui uma conta?
+                    </Typography>
+                    <Button variant='outlined' onClick={handleFormType} sx={{alignSelf: 'center'}}>
+                        Login
+                    </Button>
+                </Box>
+            </Container>
         )
     }
 }

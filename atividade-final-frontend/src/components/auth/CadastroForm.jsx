@@ -31,7 +31,7 @@ function CadastroForm({onChange, onSubmit}) {
      }
 
   return (
-    <Box onSubmit={onSubmit} component="form" sx={{display: 'flex', flexFlow: 'column noWrap', gap: '20px'}}>
+    <Box onSubmit={onSubmit} component="form" sx={{display: 'flex', flexFlow: 'column', gap: '20px',}}>
         <TextField
           required
           variant='outlined'
@@ -70,7 +70,7 @@ function CadastroForm({onChange, onSubmit}) {
           name='confirmPassword'
           onChange={onChange}
         />
-        <Button type='submit' variant='contained'>
+        <Button type='submit' variant='contained' sx={{alignSelf: 'center'}}>
             Cadastre-se
         </Button>
     </Box>

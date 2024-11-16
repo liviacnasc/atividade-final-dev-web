@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import authServices from '../../services/Auth';
 
 const SidebarItem = ({id, icon, primary, link}) => {
+
     return (
         <ListItem key={id} component={Link} to={link} sx={{color: "#000"}} disablePadding>
             <ListItemButton>
@@ -20,6 +21,7 @@ const SidebarItem = ({id, icon, primary, link}) => {
 }
 
 export default function Sidebar({callback}) {
+    const { response } = authServices();
 
     return (
     <div>
@@ -31,8 +33,8 @@ export default function Sidebar({callback}) {
             </Toolbar>
             <Divider/>
             <Toolbar>
-                <List component="nav">
-                    <SidebarItem id="0" primary="Dashboard" icon={<DashboardRounded/>} link="/dashboard"/>
+                <List sx={{width: '100%'}}>
+                    <SidebarItem id="1" primary="Home" icon={<DashboardRounded/>} link="/dashboard"/>
                     <SidebarItem id="1" primary="Alunos" icon={<GroupIcon/>} link="alunos"/>
                     <SidebarItem id="2" primary="Turmas" icon={<SchoolIcon/>} link="turmas"/>
                 </List>
@@ -40,9 +42,12 @@ export default function Sidebar({callback}) {
         </Box>
         <Box>
             <Toolbar>
-                <Button variant='outlined' sx={{color: 'gray'}} onClick={callback}>
+                {
+                    response.flat().map((response) => <Typography variant='body1'>{response.body.nome_completo}</Typography>)
+                }
+                <Typography sx={{margin: 2}}>Sair</Typography>
+                <Button variant='outlined' sx={{color: 'gray', maxWidth: 'fit-content', "&:hover": {color: 'black', backgroundColor: 'gray'}}} onClick={callback} aria-label='Sair'>
                     <Logout sx={{fontSize: '12px'}}/>
-                    Sair
                 </Button>
             </Toolbar>
         </Box>

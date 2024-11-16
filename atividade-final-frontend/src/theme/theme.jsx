@@ -2,7 +2,7 @@ import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
   typography: {
-    fontFamily:'Open Sans'
+    fontFamily:'Jost'
   },
   palette: {
     mode: 'light',
@@ -16,7 +16,7 @@ export const theme = createTheme({
   components: {
     MuiAppBar: {
       defaultProps: {
-        color: 'transparent',
+        color: 'primary',
       }
     },
     MuiListItem: {

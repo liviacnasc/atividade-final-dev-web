@@ -6,10 +6,13 @@ import Navbar from '../components/navbar/Navbar';
 
 export default function LandingPage() {
   return (
-    <Box sx={{display: "flex"}}>
+    <Box sx={{display: "flex", flexFlow: 'column'}}>
       <Navbar/>
       <Typography variant='h1'>
-        Teste
+        Sistema Administrativo
+      </Typography>
+      <Typography variant='h4'>
+        Gerencie a sua escola de forma prática e rápida!
       </Typography>
     </Box>
     // <div className='container'>

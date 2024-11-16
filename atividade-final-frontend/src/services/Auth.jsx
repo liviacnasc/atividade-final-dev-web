@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 export default function authServices() {
   const [authLoading, setAuthLoading] = useState(false);
+  const [response, setResponse] = useState([]);
 
   const url = 'http://localhost:3000/auth';
 
@@ -23,9 +24,9 @@ export default function authServices() {
             localStorage.setItem('auth',
                 JSON.stringify({
                     token: result.body.token,
-                    user: result.body.user
                 })
             )
+            setResponse(result);
         }
     })
     .catch((error) => {
@@ -55,12 +56,7 @@ export default function authServices() {
     .then((result) => {
         console.log(result)
         if(result.success && result.body.token){
-            localStorage.setItem('auth',
-                JSON.stringify({
-                    token: result.body.token,
-                    user: result.body.user
-                })
-            )
+            setResponse(result);
         }
     })
     .catch((error) => {
@@ -71,5 +67,5 @@ export default function authServices() {
     })
   }
 
-  return { signUp, logIn, logOut, authLoading }
+  return { signUp, logIn, logOut, response, authLoading }
 }
