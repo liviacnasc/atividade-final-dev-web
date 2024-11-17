@@ -2,7 +2,7 @@ import { Box, Button, Typography } from '@mui/material';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link, Outlet } from 'react-router-dom';
-import Navbar from '../components/navbar/Navbar';
+import Navbar from '../components/landpage.jsx/Navbar';
 
 export default function LandingPage() {
   return (

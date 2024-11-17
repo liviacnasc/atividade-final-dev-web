@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import turmasServices from '../services/Turmas'
-import { Accordion, AccordionDetails, AccordionSummary, Box, CircularProgress, Collapse, Container, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
+import turmasServices from '../../services/Turmas'
+import { Accordion, AccordionDetails, AccordionSummary, Box, CircularProgress, Collapse, Container, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material';
 import { FixedSizeList } from 'react-window';
 import { Expand, ExpandLess, ExpandMore, ExpandMoreSharp, Person } from '@mui/icons-material';
-import ListItems from '../components/lista-turmas/listItems';
+import ListItems from '../../components/lista-turmas/listItems';
 
 const Turmas = () => {
   const { getTurmas, turmasLoading, refetchTurmas, turmasList } = turmasServices();
@@ -14,14 +14,18 @@ const Turmas = () => {
   
   if(turmasLoading){
     return (
-      <CircularProgress/>
+      <Box>
+        <CircularProgress/>
+      </Box>
     )
   }
   return (
     <Box sx={{width: '100%'}}>
-      <Typography variant='h5' sx={{textAlign: 'start', ml: 1}}>
-        Turmas
-      </Typography>
+      <Toolbar>
+        <Typography variant='h5' sx={{textAlign: 'start', ml: 1}}>
+          Turmas
+        </Typography>
+      </Toolbar>
       { turmasList.length > 0 ? (
       <Container>
         <List component='div' disablePadding>

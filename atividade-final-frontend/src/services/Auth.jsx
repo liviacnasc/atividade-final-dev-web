@@ -20,13 +20,13 @@ export default function authServices() {
     .then((response) => response.json())
     .then((result) => {
         console.log(result)
+        setResponse(result.body.text)
         if(result.success && result.body.token){
             localStorage.setItem('auth',
                 JSON.stringify({
                     token: result.body.token,
                 })
             )
-            setResponse(result);
         }
     })
     .catch((error) => {
@@ -55,9 +55,7 @@ export default function authServices() {
     .then((response) => response.json())
     .then((result) => {
         console.log(result)
-        if(result.success && result.body.token){
-            setResponse(result);
-        }
+        setResponse(result.body.text)
     })
     .catch((error) => {
         console.log(error)

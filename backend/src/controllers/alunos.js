@@ -1,4 +1,4 @@
-import AlunosDAO from '../DAO/alunos.js';
+import AlunosDAO from '../dao/alunos.js';
 import { erroServidor, successo } from '../helpers/httpResponse.js';
 
 export default class AlunosController{
@@ -8,11 +8,21 @@ export default class AlunosController{
 
     async getAlunos() {
         try {
-            const alunos = await this.dataAccess.getAlunos();
+            const result = await this.dataAccess.getAlunos();
 
-            return successo(alunos);
+            return successo(result);
         } catch (error) {
             return erroServidor(error);
+        }
+    }
+
+    async getAlunoById(alunoId) {
+        try {
+            const result = await this.dataAccess.getAlunoById(alunoId);
+
+            return successo(result);
+        } catch (error) {
+            return erroServidor(error)
         }
     }
 

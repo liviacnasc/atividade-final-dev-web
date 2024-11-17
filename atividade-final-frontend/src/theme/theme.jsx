@@ -7,22 +7,52 @@ export const theme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#3f51b5',
+      main: '#1976d2',
     },
     secondary: {
-      main: '#f50057',
+      main: '#9c27b0',
     },
+
   },
   components: {
     MuiAppBar: {
-      defaultProps: {
-        color: 'primary',
+      styleOverrides: {
+        colorPrimary: {
+          backgroundColor: 'white'
+        }
+      }
+    },
+    MuiTooltip: {
+      styleOverrides:{
+        tooltip: {
+          color: 'white',
+          backgroundColor: 'black'
+        },
+        arrow: {
+          color:'black'
+        }
+      }
+    },
+    MuiIconButton: {
+      styleOverrides:{
+        root: {
+          '&:hover': { color: '#1976d2'}
+        }
       }
     },
     MuiListItem: {
-      defaultProps: {
-        color: '#000', 
-      },
+      styleOverrides: {
+        root: {
+          color: 'inherit'
+        }
+      }
+    },
+    MuiListItemIcon: {
+      styleOverrides: {
+        root: {
+          color: 'inherit'
+        }
+      }
     },
   },
 });

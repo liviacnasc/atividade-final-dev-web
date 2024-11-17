@@ -32,6 +32,15 @@ h3 {
     text-align: center; 
 }
 
+a.active{
+    background: #1976d2;
+    color: white;
+}
+
+a:visited{
+    border: none;
+}
+
 .voltar {
     background-color: white;
     color: #0055a5;

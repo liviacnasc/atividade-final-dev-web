@@ -1,8 +1,9 @@
-import { ExpandLess, ExpandMore, Person } from '@mui/icons-material'
-import { Box, Collapse, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import React, { useState } from 'react'
+import { ExpandLess, ExpandMore, Person } from '@mui/icons-material';
+import { Box, Collapse, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import ListItemsAlunos from '../lista-alunos/listItems';
 
-function NestedItem({aluno}) {
+function NestedItem({aluno, turmaId}) {
     const [open, setOpen] = useState(false);
 
     const handleClick = () => {
@@ -14,20 +15,13 @@ function NestedItem({aluno}) {
         }
     return (
         <Box sx={{width: '100%'}}>
-            <ListItemButton onClick={handleClick}>
-                    <ListItemIcon>
-                    <Person />
-                    </ListItemIcon>
+            <ListItemButton key={`${turmaId}-a`} onClick={handleClick}>
                     <ListItemText primary="Alunos"/>
                     {open ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
             <Collapse in={open} timeout="auto" unmountOnExit>
                 <List>
-                {aluno.map((aluno) => 
-                    <ListItemButton sx={{display: 'flex', flexFlow: 'column', alignItems: 'start'}} key={aluno._id}>
-                    <ListItemText primary={`${aluno.nome} ${aluno.sobrenome}`} secondary={`CPF: ${aluno.cpf}`}/>
-                    </ListItemButton>
-                )}
+                    <ListItemsAlunos alunosData={aluno}/>
                 </List>
             </Collapse>
         </Box>

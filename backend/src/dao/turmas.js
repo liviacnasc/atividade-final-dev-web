@@ -19,7 +19,10 @@ export default class TurmasDAO {
                 }
             },
             {
-                $unwind: { path: "$alunosTurma" }
+                $unwind: { 
+                    path: "$alunosTurma",
+                    preserveNullAndEmptyArrays: true
+                }
             },
             {
                 $lookup: {

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { AppBar, Box, CssBaseline, Divider, Drawer, Icon, IconButton, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material';
-import { Draw, MenuBook, MenuRounded } from '@mui/icons-material';
-import Sidebar from './sidebar/Sidebar';
+import { AppBar, Avatar, Box, CssBaseline, Divider, Drawer, Icon, IconButton, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material';
+import { MenuRounded, Settings } from '@mui/icons-material';
 import { Outlet, useNavigate } from 'react-router-dom';
 import authServices from '../services/Auth';
+import Sidebar from '../components/sidebar/Sidebar';
 
 const sidebarWidth = 240;
 
@@ -45,22 +45,21 @@ function Layout(props) {
   return(
     <Box sx={{display: 'flex'}}>
 			<CssBaseline/>
-      <AppBar
+      <AppBar elevation={0}
       sx={{
         width: {sm: `calc(100% - ${sidebarWidth}px)`},
-        display: {sm: 'none'},
         }}>
         <Toolbar>
 				<IconButton
-					
 					size='small'
           aria-label='abrir sidebar'
           edge='start'
           onClick={handleSidebarToggle}
-          sx={{width:50}}>
+          sx={{width:50, display: {sm: 'none'}}}>
             <MenuRounded/>
           </IconButton>
         </Toolbar>
+        <Divider/>
       </AppBar>
       <Box 
         component="nav"
@@ -90,7 +89,7 @@ function Layout(props) {
           <Sidebar callback={handleLogOut}/>
         </Drawer>
       </Box>
-      <Box component="main" sx={{ width: {sm: `calc(100% - ${sidebarWidth}px)`}}}>
+      <Box component="main" sx={{ width: '100%'}}>
       <Toolbar/>
 				<Outlet/>
       </Box>

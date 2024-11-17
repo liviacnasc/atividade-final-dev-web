@@ -1,4 +1,4 @@
-import { Box, Button, Container, Typography } from '@mui/material';
+import { Box, Button, Container, Snackbar, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import LoginForm from '../../components/auth/LoginForm';
 import CadastroForm from '../../components/auth/CadastroForm';
@@ -8,15 +8,28 @@ import authServices from '../../services/Auth';
 export const Auth = () => {
     const [formType, setFormType] = useState('login');
     const [formData, setFormData] = useState(null);
+    const [openSnackbar, setOpenSnackbar] = useState(false);
     const navigate = useNavigate();
     const authData = JSON.parse(localStorage.getItem('auth'));
-    const { logIn, signUp } = authServices();
+    const { logIn, signUp, response } = authServices();
   
     useEffect(() => {
       if(authData) {
         return navigate('/dashboard')
       }
     })
+
+    const handleClick = () => {
+        setOpenSnackbar(true);
+    };
+
+    const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+        return;
+    }
+
+    setOpenSnackbar(false);
+    };
 
     const handleFormType = () => {
         if(formType == 'login'){
@@ -38,10 +51,12 @@ export const Auth = () => {
 
         if(formType == 'login'){
             logIn(formData);
+            handleClick();
         }
 
         if(formType == 'cadastro'){
             signUp(formData);
+            handleClick();
         }
       }
       
@@ -88,6 +103,12 @@ export const Auth = () => {
                     flexFlow: 'column',
                     justifyContent: 'center'
                     }}>
+                <Snackbar 
+                    open={openSnackbar}
+                    autoHideDuration={6000}
+                    onClose={handleClose}
+                    message={response}
+                />
                 <Box component={Container} maxWidth='sm' sx={{display:'flex', flexFlow:'column', padding: "30px", boxShadow: 2, bgcolor:'white'}}>
                     <Typography variant='body1' sx={{mb: "10px"}}>
                         Cadastro

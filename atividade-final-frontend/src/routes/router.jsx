@@ -1,12 +1,13 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Home from '../pages/Home';
-import Alunos from '../pages/Alunos';
+import Alunos from '../pages/dashboard/Alunos';
 import LandingPage from '../pages/LandingPage';
-import Turmas from '../pages/Turmas';
-import Charts from '../pages/Charts';
+import Turmas from '../pages/dashboard/Turmas';
+import Charts from '../pages/dashboard/Charts';
 import { Auth } from '../pages/auth/Auth';
-import Layout from '../components/Layout';
+import Layout from '../pages/Layout';
+import AlunoForm from '../components/forms/AlunoForm';
 
 export const router = createBrowserRouter([
     {
@@ -31,7 +32,16 @@ export const router = createBrowserRouter([
 								},
 								{
 									path:'alunos',
-									element: <Alunos/>
+									children: [
+										{
+											index: true,
+											element: <Alunos/>
+										},
+										{
+											path: 'edit/:id',
+											element:<AlunoForm/>
+										}
+									]
 								},
 								{
 									path: 'turmas',

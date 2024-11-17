@@ -1,15 +1,16 @@
 import React from 'react'
-import { Box, Button, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material'
+import { Box, Button, css, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material'
 import { DashboardRounded, Logout } from '@mui/icons-material'
 import GroupIcon from '@mui/icons-material/Group';
 import SchoolIcon from '@mui/icons-material/School';
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import authServices from '../../services/Auth';
+import { jsx } from '@emotion/react';
 
 const SidebarItem = ({id, icon, primary, link}) => {
-
+    
     return (
-        <ListItem key={id} component={Link} to={link} sx={{color: "#000"}} disablePadding>
+        <ListItem key={id} end component={NavLink} to={link} sx={{borderRadius: '5px'}} disablePadding>
             <ListItemButton>
                 <ListItemIcon>
                     {icon}

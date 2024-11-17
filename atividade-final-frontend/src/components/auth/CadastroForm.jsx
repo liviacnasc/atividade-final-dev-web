@@ -3,26 +3,7 @@ import React, { useState } from 'react'
 import authServices from '../../services/Auth';
 
 function CadastroForm({onChange, onSubmit}) {
-    const [formData, setFormData] = useState(null);
-    const { signUp, authLoading } = authServices();
-
-    const handleFormDataChange = (event) => {
-        setFormData({
-            ...formData,
-            [event.target.name]: event.target.value,
-        })
-    
-    
-    }
-    
-    const handleSubmitForm = (e) => {
-        e.preventDefault()
-        if(formData.password !== formData.confirmPassword){
-          console.log("As senhas não coincidem.")
-          return
-        }
-        signUp(formData);
-     }
+    const { authLoading } = authServices();
 
      if(authLoading){
       return (

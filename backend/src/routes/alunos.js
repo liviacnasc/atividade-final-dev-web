@@ -29,4 +29,10 @@ alunosRouter.put('/:id', async (req, res) => {
     res.status(statusCode).send({ success, statusCode, body });
 })
 
+alunosRouter.get('/:id', async (req, res) => {
+    const { success, statusCode, body } = await alunosController.getAlunoById(req.params.id);
+
+    res.status(statusCode).send({ success, statusCode, body });
+})
+
 export default alunosRouter;

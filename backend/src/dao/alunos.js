@@ -20,7 +20,10 @@ export default class AlunosDAO {
                     }
                 },
                 {
-                    $unwind: { path: "$turma" }
+                    $unwind: { 
+                        path: "$turma",
+                        preserveNullAndEmptyArrays: true
+                    }
                 },
                 {
                     $lookup:{
@@ -43,6 +46,11 @@ export default class AlunosDAO {
                         presencas: { $first: '$presencas'},
                         turma: { $push: '$turma.turmaDetalhes'},
                     }
+                },
+                {
+                    $sort: {
+                        nome: 1
+                    }
                 }
             ]
         )
@@ -51,6 +59,14 @@ export default class AlunosDAO {
         return result;
     }
     
+    async getAlunoById(alunoId) {
+        const result = await Mongo.db
+        .collection(collectionName)
+        .findOne({_id: new ObjectId(alunoId)}, { $project: { _id: 1 }})
+
+        return result;
+    }
+
     async addAluno(alunoData) {
         const result = await Mongo.db
         .collection(collectionName)
