@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
 											element: <Alunos/>
 										},
 										{
-											path: 'edit/:id',
+											path: 'adicionar-aluno',
 											element:<AlunoForm/>
 										}
 									]

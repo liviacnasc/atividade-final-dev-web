@@ -19,16 +19,6 @@ export default function ListItemsAlunos({alunosData}) {
               <ListItemText primary={`${aluno.nome} ${aluno.sobrenome}`} secondary={`CPF: ${aluno.cpf}`}/>
             </Grid2>
             <Grid2 size={6} sx={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
-              <Tooltip title="Ver turmas" arrow>
-                <IconButton>
-                  <SchoolOutlined/>
-                </IconButton>
-              </Tooltip>
-              <Tooltip title="Editar cadastro" arrow>
-                <IconButton component={Link} to={`edit/${aluno._id}`} onClick={(id) => { id = aluno._id; handleClick(id)}}>
-                  <EditNoteOutlined/>
-                </IconButton>
-              </Tooltip>
             </Grid2>
           </Grid2>
         </ListItem>

@@ -1,26 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import alunosServices from '../../services/Alunos'
-import { Accordion, AccordionDetails, AccordionSummary, Box, CircularProgress, Collapse, Container, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material';
-import { FixedSizeList } from 'react-window';
-import { Expand, ExpandLess, ExpandMore, ExpandMoreSharp, Person } from '@mui/icons-material';
-import ListItems from '../../components/lista-turmas/listItems';
+import { Box, CircularProgress, Container, Fab, List, Modal, Snackbar, Toolbar, Typography } from '@mui/material';
+import { Add } from '@mui/icons-material';
 import ListItemsAlunos from '../../components/lista-alunos/listItems';
+import AlunoForm from '../../components/forms/AlunoForm';
+import { useNavigate } from 'react-router-dom';
 
 const Alunos = () => {
-  const { getAlunos, alunosLoading, refetchAlunos, alunosList } = alunosServices();
+  const { getAlunos, alunosLoading, refetchAlunos, alunosList, response } = alunosServices();
   const [open, setOpen] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const navigate = useNavigate();
+
+  
+  const handleOpenModal = () => navigate('adicionar-aluno')
 
   useEffect(() => {
       getAlunos();
   }, [refetchAlunos])
-  
-  const handleClick = () => {
-    if(!open){
-      setOpen(true);
-    }else{
-      setOpen(false);
-    }
-  }
 
   if(alunosLoading){
     return (
@@ -29,6 +26,7 @@ const Alunos = () => {
       </Box>
     )
   }
+
   return (
     <Box sx={{width: '100%'}}>
       <Toolbar>
@@ -49,6 +47,14 @@ const Alunos = () => {
       </Typography>
 
       )}
+      <Fab color="primary" onClick={handleOpenModal} sx={{    margin: 0,
+    top: 'auto',
+    right: 20,
+    bottom: 20,
+    left: 'auto',
+    position: 'fixed',}} aria-label="add">
+        <Add />
+      </Fab>
     </Box>
   )
 }

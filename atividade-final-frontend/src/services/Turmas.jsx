@@ -4,6 +4,7 @@ export default function turmasServices() {
   const [turmasLoading, setTurmasLoading] = useState(false);
   const [refetchTurmas, setRefetchTurmas] = useState(true);
   const [ turmasList, setTurmasList] = useState([]);
+  const [ response, setResponse ] = useState({});
 
   const url = 'http://localhost:3000';
 

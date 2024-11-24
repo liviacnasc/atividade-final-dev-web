@@ -11,7 +11,7 @@ alunosRouter.get('/', async (req, res) => {
     res.status(statusCode).send({success, statusCode, body});
 })
 
-alunosRouter.post('/cadastro', async (req, res) => {
+alunosRouter.post('/adicionar-aluno', async (req, res) => {
     const { success, statusCode, body } = await alunosController.addAluno(req.body);
 
     res.status(statusCode).send({ success, statusCode, body });

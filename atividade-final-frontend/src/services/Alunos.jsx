@@ -4,7 +4,7 @@ export default function alunosServices() {
   const [ alunosLoading, setAlunosLoading ] = useState(false);
   const [ refetchAlunos, setRefetchAlunos ] = useState(true);
   const [ alunosList, setAlunosList ] = useState([]);
-  const [ alunoData, setAlunoData ] = useState([]);
+  const [ response, setResponse ] = useState('');
 
   const url = 'http://localhost:3000';
 
@@ -50,7 +50,7 @@ export default function alunosServices() {
     .then((result) => {
         if(result.success){
             console.log(result.body)
-            setAlunoData(result.body)
+            setResponse(result.body)
         }else{
             console.log(result)
         }
@@ -68,10 +68,10 @@ export default function alunosServices() {
 //     localStorage.removeItem('alunos');
 //   }
 
-  const addTurma = (formData) => {
+  const addAluno = (formData) => {
     setAlunosLoading(true);
 
-    fetch(`${url}/cadastro`, {
+    fetch(`${url}/alunos/adicionar-aluno`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ export default function alunosServices() {
     .then((response) => response.json())
     .then((result) => {
         if(result.success && result.body.token){
-            
+            setResponse(result.body)
         }
     })
     .catch((error) => {
@@ -93,5 +93,5 @@ export default function alunosServices() {
     })
   }
 
-  return { getAlunos, getAlunoById, alunosLoading, refetchAlunos, alunosList, alunoData }
+  return { getAlunos, getAlunoById, alunosLoading, refetchAlunos, alunosList, addAluno, response }
 }

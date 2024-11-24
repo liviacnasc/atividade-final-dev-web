@@ -5,11 +5,11 @@ import authServices from '../../services/Auth';
 function CadastroForm({onChange, onSubmit}) {
     const { authLoading } = authServices();
 
-     if(authLoading){
-      return (
-        <CircularProgress/>
-      )
-     }
+    if(authLoading){
+    return (
+      <CircularProgress/>
+    )
+    }
 
   return (
     <Box onSubmit={onSubmit} component="form" sx={{display: 'flex', flexFlow: 'column', gap: '20px',}}>

@@ -19,6 +19,7 @@ function Layout(props) {
     if(!authData) {
       return navigate('auth')
     }
+    
   })
   
 

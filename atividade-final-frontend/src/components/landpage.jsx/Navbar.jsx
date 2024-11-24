@@ -11,7 +11,7 @@ const Navbar = () => {
                 <Typography>
                     Teste
                 </Typography>
-                <Button variant='text' sx={{color: 'white'}} component={Link} to='/dashboard'>
+                <Button variant='text' component={Link} to='/dashboard'>
                     Acessar dashboard
                 </Button>
             </Toolbar>
