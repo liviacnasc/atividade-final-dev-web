@@ -3,6 +3,12 @@
 
 Projeto desenvolvido para a disciplina Desenvolvimento para Plataformas Web.
 
+## Time
+- Fernando Henrique Costa Evangelista
+- Rebeca Samia Santos Vasconcelos da Silva
+- Ana Lívia Cavalcante Nascimento
+- Matheus Pedrosa Aresi
+- Gabriel Eduardo Brasil Rocha Bezerra
 
 ## Stack utilizada
 
