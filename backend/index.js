@@ -20,8 +20,12 @@ async function main() {
     app.use(express.json());
     app.use(cors());
 
-    app.use("/", (req, res) => {
-        res.send("Teste");
+    app.get("/", (req, res) => {
+        res.send({
+            success: true,
+            statusCode: 200
+        }
+        );
     });
     
     app.use('/auth', authRouter);

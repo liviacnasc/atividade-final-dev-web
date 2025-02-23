@@ -1,4 +1,4 @@
-import UsersDAO from '../DAO/users.js';
+import UsersDAO from '../dao/users.js';
 import { erroServidor, successo } from '../helpers/httpResponse.js';
 
 export default class UsersController{
