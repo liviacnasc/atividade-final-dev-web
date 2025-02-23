@@ -9,7 +9,8 @@ import turmasRouter from "./routes/turmas.js";
 
 config();
 
-async function main() {
+async function main() { 
+    
     const hostname = "localhost";
     const port = "3000";
 
