@@ -9,7 +9,8 @@ import turmasRouter from "./routes/turmas.js";
 
 config();
 
-async function main() {
+async function main() { 
+
     const hostname = "localhost";
     const port = "3000";
 
@@ -18,7 +19,11 @@ async function main() {
     console.log(mongoConnection);
     
     app.use(express.json());
-    app.use(cors());
+    app.use(cors({
+        origin: [""],
+        methods: ["POST", "GET"],
+        credentials: true})
+    );
 
     app.get("/", (req, res) => {
         res.send({
