@@ -10,11 +10,6 @@ import turmasRouter from "./routes/turmas.js";
 config();
 
 async function main() { 
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 6f3146c0aa719f061be8528352997b35dd52cb0f
     const hostname = "localhost";
     const port = "3000";
 
@@ -29,7 +24,7 @@ async function main() {
         credentials: true})
     );
 
-    app.get("/", (req, res) => {
+    app.use("/", (req, res) => {
         res.send({
             success: true,
             statusCode: 200
