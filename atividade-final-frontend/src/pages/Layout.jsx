@@ -17,7 +17,7 @@ function Layout(props) {
 
   useEffect(() => {
     if(!authData) {
-      return navigate('auth')
+      return navigate('auth', {replace: true})
     }
     
   })
