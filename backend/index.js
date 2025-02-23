@@ -15,8 +15,6 @@ async function main() {
 
     const app = express();
     const mongoConnection = await Mongo.connect({mongoConnectionString: process.env.MONGO_CONNECTION_STRING, mongoDbName: process.env.MONGO_DATABASE_NAME});
-    console.log(mongoConnection);
-    
     app.use(express.json());
     app.use(cors());
 
