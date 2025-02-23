@@ -19,10 +19,7 @@ async function main() {
     app.use();
 
     app.use("/", (req, res) => {
-        res.send({
-            success: true,
-            statusCode: 200
-        });
+        res.send("Teste");
     });
     
     app.use('/auth', authRouter);
