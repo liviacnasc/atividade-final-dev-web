@@ -10,19 +10,13 @@ import turmasRouter from "./routes/turmas.js";
 config();
 
 async function main() { 
-    const hostname = "localhost";
-    const port = "3000";
 
     const app = express();
     const mongoConnection = await Mongo.connect({mongoConnectionString: process.env.MONGO_CONNECTION_STRING, mongoDbName: process.env.MONGO_DATABASE_NAME});
     console.log(mongoConnection);
     
     app.use(express.json());
-    app.use(cors({
-        origin: [""],
-        methods: ["POST", "GET"],
-        credentials: true})
-    );
+    app.use();
 
     app.use("/", (req, res) => {
         res.send({
@@ -35,10 +29,6 @@ async function main() {
     app.use('/user', usersRouter);
     app.use('/alunos', alunosRouter);
     app.use('/turmas', turmasRouter);
-
-    app.listen(port, () => {
-        console.log(`Server running on: http://${hostname}:${port}`);
-    });
 
 }
 
