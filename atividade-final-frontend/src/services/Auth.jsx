@@ -4,7 +4,7 @@ export default function authServices() {
   const [authLoading, setAuthLoading] = useState(false);
   const [response, setResponse] = useState([]);
 
-  const url = `${process.env.VITE_REACT_APP_BACKEND_BASEURL}/auth`;
+  const url = `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth`;
 
   const logIn = async (formData) => {
     setAuthLoading(true);

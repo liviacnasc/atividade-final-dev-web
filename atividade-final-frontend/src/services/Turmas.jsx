@@ -6,7 +6,7 @@ export default function turmasServices() {
   const [ turmasList, setTurmasList] = useState([]);
   const [ response, setResponse ] = useState({});
 
-  const url = process.env.VITE_REACT_APP_BACKEND_BASEURL;
+  const url = import.meta.env.VITE_REACT_APP_BACKEND_BASEURL;
 
   const getTurmas = () => {
     setTurmasLoading(true);
