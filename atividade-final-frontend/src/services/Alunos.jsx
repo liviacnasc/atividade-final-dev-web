@@ -6,7 +6,7 @@ export default function alunosServices() {
   const [ alunosList, setAlunosList ] = useState([]);
   const [ response, setResponse ] = useState('');
 
-  const url = 'http://localhost:3000';
+  const url = process.env.VITE_REACT_APP_BACKEND_BASEURL;
 
   const getAlunos = async () => {
     setAlunosLoading(true);
