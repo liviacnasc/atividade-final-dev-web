@@ -1,11 +1,11 @@
 import express from "express";
 import cors from "cors";
-import { Mongo } from "./database/mongo.js";
+import { Mongo } from "./src/database/mongo.js";
 import { config } from "dotenv";
-import authRouter from "./auth/auth.js";
-import usersRouter from "./routes/users.js";
-import alunosRouter from "./routes/alunos.js";
-import turmasRouter from "./routes/turmas.js";
+import authRouter from "./src/auth/auth.js";
+import usersRouter from "./src/routes/users.js";
+import alunosRouter from "./src/routes/alunos.js";
+import turmasRouter from "./src/routes/turmas.js";
 
 config();
 
