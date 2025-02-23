@@ -4,7 +4,7 @@
   "description": "API desenvolvida para a atividade final da disciplina Desenvolvimento em Plataformas Web.",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon index.js"
   },
   "author": "Ana Lívia, Rebeca Samia",
   "license": "ISC",
