@@ -16,7 +16,7 @@ async function main() {
     console.log(mongoConnection);
     
     app.use(express.json());
-    app.use();
+    app.use(cors());
 
     app.use("/", (req, res) => {
         res.send("Teste");
